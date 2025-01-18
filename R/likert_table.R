@@ -12,7 +12,7 @@ likert_table = function(x, include_ns = TRUE, cross = NULL) {
   }
   
   ## unlist the likert() results to the function environment
-  invisible(list2env(likert_list, env = environment()))
+  invisible(list2env(likert_list, envir = environment()))
   
   ## if include_ns argument is set to true then create valid_n df with the Ns
   if(include_ns == TRUE) {
