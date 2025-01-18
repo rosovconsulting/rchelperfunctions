@@ -1,4 +1,4 @@
-likert_ns = function(x, include_ns = TRUE, cross = NULL) {
+likert_table = function(x, include_ns = TRUE, cross = NULL) {
   
   ## x should already be a data frame with only the variables you want in this function call
   likert_list <- as.data.frame(x)
