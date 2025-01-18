@@ -1,13 +1,13 @@
 likert_tidy_table = function(question){
   
   survey_data %>% 
-    select(!!sym(question)) %>%
-    mutate(across(everything(), ~fct_rev(.x))) %>% 
-    count(!!sym(question), .drop = FALSE) %>%
-    ungroup() %>% 
-    pivot_wider(names_from = !!sym(question),
+    dplyr::select(!!dplyr::sym(question)) %>%
+    dplyr::mutate(dplyr::across(tidyselect::everything(), ~forcats::fct_rev(.x))) %>% 
+    dplyr::count(!!dplyr::sym(question), .drop = FALSE) %>%
+    dplyr::ungroup() %>% 
+    tidyr::pivot_wider(names_from = !!dplyr::sym(question),
                 values_from = "n",
     ) %>% 
-    mutate(Item = question,
+      dplyr::mutate(Item = question,
            .before = 1)
 }
