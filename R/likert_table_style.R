@@ -13,12 +13,12 @@ likert_table_style = function(x, table_title) {
       dplyr::select(-Item) %>% 
         dplyr::select(Label, tidyselect::everything()) %>% 
           dplyr::rename(Item = Label) %>% 
-            dplyr::filter(dplyr::if_any(tidyselect::where(is.numeric) & !tidyselect::matches("N$"), ~.x != 0)) %>% 
+            dplyr::filter(dplyr::if_any(tidyselect::where(is.numeric) & !tidyselect::matches("N$", ignore.case = FALSE), ~.x != 0)) %>% 
     # arrange(Group, desc(across(names(.)[3]))) %>% ## this line sorts descending on third column, this syntax allows the name of the third column to differ
     # arrange(desc(.[[2]]), desc(.[[3]]))
     gt::gt(rowname_col = "Group",
            groupname_col = "Item") %>% 
-    gt::fmt_percent(columns = tidyselect::where(is.numeric) & !tidyselect::matches("N$"),
+    gt::fmt_percent(columns = tidyselect::where(is.numeric) & !tidyselect::matches("N$", ignore.case = FALSE),
                 decimals = 0) %>% 
                   gt::tab_header(table_title) %>% 
     # data_color(columns = tidyselect::where(is.numeric) & !tidyselect::matches("N$"),

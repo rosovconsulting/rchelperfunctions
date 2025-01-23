@@ -10,14 +10,14 @@
 #' @examples
 #' survey_data %>% 
 #'   tabyl(q1) %>% 
-#'   table_style(., "Region")
+#'   table_style(., table_title = "Region")
 #' 
 
 table_style = function(x, table_title) {
   
   x %>% 
   gt::gt() %>% 
-  gt::fmt_percent(columns = tidyselect::where(is.numeric) & !tidyselect::matches("N$"),
+  gt::fmt_percent(columns = tidyselect::where(is.numeric) & !tidyselect::matches("N$", ignore.case = FALSE),
   decimals = 0) %>% 
   gt::cols_label(1 ~ "") %>% 
   gt::cols_align(align = "left",
