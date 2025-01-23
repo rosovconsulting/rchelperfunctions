@@ -4,7 +4,13 @@
 #' @param table_title Title for gt Table
 #'
 #' @return Styled gt table
+#' 
 #' @export
+#' 
+#' @examples
+#' survey_data %>% 
+#'   tabyl(q1) %>% 
+#'   table_style(., "Region")
 #' 
 
 table_style = function(x, table_title) {

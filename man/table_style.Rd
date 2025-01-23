@@ -17,3 +17,9 @@ Styled gt table
 \description{
 Add gt style to table
 }
+\examples{
+survey_data \%>\% 
+  tabyl(q1) \%>\% 
+  table_style(., "Region")
+
+}
