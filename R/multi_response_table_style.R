@@ -10,7 +10,7 @@
 #' multi_response_table_style()
 #' 
 #' 
-multi_response_table = function(x) {
+multi_response_table_style = function(x) {
   x %>% 
     gt::gt() %>% 
     gt::sub_missing(columns = "percent of cases",
