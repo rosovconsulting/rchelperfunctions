@@ -18,7 +18,7 @@ likert_tidy_table_style = function(x, table_title) {
   dplyr::relocate(Label, .after = NULL) %>% 
   gt::gt() %>% 
   gt::tab_header(table_title) %>% 
-  gt::fmt_percent(columns = tidyselect::where(is.numeric) & !tidyselect::matches("N$", ignore.case = FALSE), decimals = 0) %>% 
+  gt::fmt_percent(columns = tidyselect::where(is.numeric) & !tidyselect::matches("^N$"), decimals = 0) %>% 
   gt::cols_label(1 ~ "") %>% 
   gt::sub_missing(missing_text = "-") %>% 
   gt::tab_options(table.align = "left",

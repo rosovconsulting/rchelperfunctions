@@ -17,7 +17,7 @@ table_style = function(x, table_title) {
   
   x %>% 
   gt::gt() %>% 
-  gt::fmt_percent(columns = tidyselect::where(is.numeric) & !tidyselect::matches("N$", ignore.case = FALSE),
+  gt::fmt_percent(columns = tidyselect::where(is.numeric) & !tidyselect::matches("^N$"),
   decimals = 0) %>% 
   gt::cols_label(1 ~ "") %>% 
   gt::cols_align(align = "left",
