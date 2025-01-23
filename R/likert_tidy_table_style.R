@@ -1,3 +1,11 @@
+#' Create styled gt likert table
+#'
+#' @param x A dataframe
+#' @param table_title Title for gt Table
+#'
+#' @return Styled gt table
+#' @export
+#' 
 likert_tidy_table_style = function(x, table_title) {
   
   x %>% 

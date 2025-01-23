@@ -1,3 +1,11 @@
+#' Create searchable, paginated table of open-ended responses
+#'
+#' @param data dataframe
+#' @param varname column name
+#' 
+#' @return searchable, paginated datatable of open-ended responses
+#' @export 
+#' 
 open_ends_table = function(data, varname) {
   
   data %>% 

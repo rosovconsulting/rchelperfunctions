@@ -1,3 +1,12 @@
+#' Add gt style to table
+#'
+#' @param x A dataframe
+#' @param table_title Title for gt Table
+#'
+#' @return Styled gt table
+#' @export
+#' 
+
 table_style = function(x, table_title) {
   
   x %>% 

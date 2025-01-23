@@ -1,3 +1,10 @@
+#' Create table from likert function
+#'
+#' @param question question number
+
+#' @return Likert result dataframe
+#' @export
+#' 
 likert_tidy_table = function(question){
   
   survey_data %>% 

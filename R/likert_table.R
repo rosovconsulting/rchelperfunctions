@@ -1,3 +1,12 @@
+#' Create table from likert function
+#'
+#' @param x A dataframe with only the variables you want in this function call.
+#' @param include_ns Should the table include N's.
+#' @param cross What variable to cross table with.
+#'
+#' @return Likert result dataframe
+#' @export
+#' 
 likert_table = function(x, include_ns = TRUE, cross = NULL) {
   
   ## x should already be a data frame with only the variables you want in this function call
