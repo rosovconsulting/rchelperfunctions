@@ -23,5 +23,7 @@ table_style = function(x, table_title) {
   gt::cols_align(align = "left",
   columns = 1) %>% 
   gt::tab_header(table_title) %>% 
-  gt::tab_options(table.align = "left")
+  gt::tab_options(table.align = "left",
+                  data_row.padding = px(5)) %>%
+  gt::opt_table_lines() %>% 
 }
