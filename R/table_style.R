@@ -29,5 +29,5 @@ table_style = function(x, table_title) {
                 locations = cells_title("title")) %>%
   gt::tab_options(table.align = "left",
                   data_row.padding = px(5)) %>%
-  gt::opt_table_lines() %>% 
+  gt::opt_table_lines()
 }
