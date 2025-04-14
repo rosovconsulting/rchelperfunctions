@@ -28,6 +28,6 @@ table_style = function(x, table_title) {
                                        gt::cell_fill(color = "#5C068C")),
                 locations = gt::cells_title("title")) %>%
   gt::tab_options(table.align = "left",
-                  data_row.padding = px(5)) %>%
+                  data_row.padding = gt::px(5)) %>%
   gt::opt_table_lines()
 }
