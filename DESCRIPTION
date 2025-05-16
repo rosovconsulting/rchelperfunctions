@@ -20,4 +20,5 @@ Imports:
     stringr,
     tidyr,
     tidyselect,
-    jsonlite
+    jsonlite,
+    expss
