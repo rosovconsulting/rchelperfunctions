@@ -38,7 +38,7 @@ table_style = function(x, table_title, interactive = FALSE) {
   
   if (interactive == TRUE) {
     table_output |>
-      opt_interactive(
+      gt::opt_interactive(
             use_search = TRUE,
             use_highlight = TRUE,
             use_page_size_select = TRUE
