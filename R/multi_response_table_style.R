@@ -13,9 +13,9 @@
 multi_response_table_style = function(x) {
   x %>% 
     gt::gt() %>% 
-    gt::sub_missing(columns = "percent of cases",
+    gt::sub_missing(columns = contains("percent of cases"),
                   missing_text = "-") %>% 
-    gt::fmt_percent(columns = `percent of cases`,
+    gt::fmt_percent(columns = contains("percent of cases"),
                       decimals = 0) %>%
     gt::cols_label(q = "") %>% 
     gt::tab_style(style = list(cell_text(color = "white",
