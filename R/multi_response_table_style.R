@@ -6,9 +6,9 @@
 #' @export
 #' 
 #' @examples
-#' multi_response_table(data = survey_data, mdset_t("q1_2_{1:11}")) %>% 
+#' \dontrun{multi_response_table(data = survey_data, mdset_t("q1_2_{1:11}")) %>% 
 #' multi_response_table_style()
-#' 
+#' }
 #' 
 multi_response_table_style = function(x) {
   x %>% 
