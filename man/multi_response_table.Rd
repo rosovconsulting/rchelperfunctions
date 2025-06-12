@@ -4,10 +4,12 @@
 \alias{multi_response_table}
 \title{Function for Multiple-response question frequency table}
 \usage{
-multi_response_table(data, ...)
+multi_response_table(data, cross = NULL, ...)
 }
 \arguments{
 \item{data}{Survey data with multireponse split into multiple columns}
+
+\item{cross}{column variable}
 
 \item{...}{expss selection}
 }
@@ -18,8 +20,8 @@ Multi-response dataframe
 Function for Multiple-response question frequency table
 }
 \examples{
-multi_response_table(data = survey_data, mdset_t("q1_2_{1:11}")) \%>\% 
-multi_response_table_style()
+multi_response_table(data = survey_data, mdset_t("q1_2_{1:11}")) \%>\%
+  multi_response_table_style()
 
 
 }
