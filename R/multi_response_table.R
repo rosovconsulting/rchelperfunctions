@@ -22,7 +22,7 @@ multi_response_table = function(data, ...) {
     expss::tab_sort_desc(excluded_rows = c("Other", "#")) %>% # sort without including rows with # and Other
     expss::split_table_to_df() %>% # transform to dataframe so you can use gt()
     janitor::row_to_names(row_number = 2, remove_row = TRUE, remove_rows_above = TRUE) %>% 
-    dplyr::mutate(q = stringr::str_remove(q, "^.+ - Selected Choice "))
+    dplyr::mutate(q = stringr::str_remove(q, "^.+ - Selected Choice ")) %>% 
     dplyr::rename("q" = 1) %>% 
     dplyr::mutate(`percent of cases` = as.numeric(`percent of cases`)) %>% 
     dplyr::mutate(`percent of cases` = `percent of cases`/100) %>% 
