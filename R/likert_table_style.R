@@ -33,5 +33,6 @@ likert_table_style = function(x, table_title) {
     #            palette = rc_purple) %>% 
     gt::tab_options(table.align = "left",
                 row_group.as_column = TRUE
-    )
+    ) %>% 
+    gt::opt_table_lines()
 }
