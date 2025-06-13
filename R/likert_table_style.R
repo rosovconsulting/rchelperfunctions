@@ -21,6 +21,10 @@ likert_table_style = function(x, table_title) {
     gt::fmt_percent(columns = tidyselect::where(is.numeric) & !tidyselect::matches("^N$"),
                 decimals = 0) %>% 
                   gt::tab_header(table_title) %>% 
+    gt::tab_style(style = list(gt::cell_text(color = "white",
+                                       weight = "bold"),
+                                       gt::cell_fill(color = "#5C068C")),
+                locations = gt::cells_title("title")) %>%
     # data_color(columns = tidyselect::where(is.numeric) & !tidyselect::matches("N$"),
     #            rows = Group == "Supervisor",
     #            direction = "row",
