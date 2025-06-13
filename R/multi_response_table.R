@@ -12,7 +12,7 @@
 #'   multi_response_table_style()
 #'
 #'
-multi_response_table = function(data, cross = NULL, ...) {
+multi_response_table = function(data, ..., cross = NULL) {
   if (missing(cross)) {
     x <- data %>%
       expss::tab_cells(...) %>%
