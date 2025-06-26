@@ -8,8 +8,8 @@
 #' @export
 #'
 #' @examples
-#' multi_response_table(data = survey_data, mdset_t("q1_2_{1:11}")) %>%
-#'   multi_response_table_style()
+#' \dontrun{multi_response_table(data = survey_data, mdset_t("q1_2_{1:11}")) %>%
+#'   multi_response_table_style()}
 #'
 #'
 multi_response_table = function(data, ..., cross = NULL) {
@@ -22,7 +22,7 @@ multi_response_table = function(data, ..., cross = NULL) {
         total_row_position = "none"
       ) %>% # adds percent of cases column
       expss::tab_pivot(stat_position = "inside_columns") %>%
-      expss::tab_sort_desc(excluded_rows = c("Other", "#")) %>% # sort without including rows with # and Other
+      expss::tab_sort_desc(excluded_rows = c("Other", "#", ":")) %>% # sort without including rows with #, a colon, and Other
       expss::split_table_to_df(remove_repeated = FALSE)
   } else {
     x <- eval(substitute({
@@ -35,7 +35,7 @@ multi_response_table = function(data, ..., cross = NULL) {
           total_row_position = "none"
         ) %>% # adds percent of cases column
         expss::tab_pivot(stat_position = "inside_columns") %>%
-        expss::tab_sort_desc(excluded_rows = c("Other", "#")) %>% # sort without including rows with # and Other
+        expss::tab_sort_desc(excluded_rows = c("Other", "#", ":")) %>% # sort without including rows with #, a colon, and Other
         expss::split_table_to_df(remove_repeated = FALSE)
     }))
   }
