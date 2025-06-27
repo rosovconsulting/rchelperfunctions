@@ -22,7 +22,7 @@ multi_response_table = function(data, ..., cross = NULL) {
         total_row_position = "none"
       ) %>% # adds percent of cases column
       expss::tab_pivot(stat_position = "inside_columns") %>%
-      expss::tab_sort_desc(excluded_rows = c("Other", "#", ":")) %>% # sort without including rows with #, a colon, and Other
+      expss::tab_sort_desc(excluded_rows = c("Other", "#", ":", "None of the above", "Prefer not to answer")) %>% # sort without including rows with #, a colon, and Other
       expss::split_table_to_df(remove_repeated = FALSE)
   } else {
     x <- eval(substitute({
@@ -35,7 +35,7 @@ multi_response_table = function(data, ..., cross = NULL) {
           total_row_position = "none"
         ) %>% # adds percent of cases column
         expss::tab_pivot(stat_position = "inside_columns") %>%
-        expss::tab_sort_desc(excluded_rows = c("Other", "#", ":")) %>% # sort without including rows with #, a colon, and Other
+        expss::tab_sort_desc(excluded_rows = c("Other", "#", ":", "None of the above", "Prefer not to answer")) %>% # sort without including rows with #, a colon, and Other
         expss::split_table_to_df(remove_repeated = FALSE)
     }))
   }
