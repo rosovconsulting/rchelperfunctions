@@ -6,22 +6,22 @@
 #' @export
 #' 
 #' @examples
-#' multi_response_table(data = survey_data, mdset_t("q1_2_{1:11}")) |> 
+#' \dontrun{multi_response_table(data = survey_data, mdset_t("q1_2_{1:11}")) |> 
 #' multi_response_table_style()
-#' 
+#' }
 #' 
 multi_response_table_style = function(x) {
   x |> 
     gt::gt() |> 
-    gt::sub_missing(columns = "percent of cases",
+    gt::sub_missing(columns = tidyselect::contains("percent of cases"),
                   missing_text = "-") |> 
-    gt::fmt_percent(columns = `percent of cases`,
+    gt::fmt_percent(columns = tidyselect::contains("percent of cases"),
                       decimals = 0) |>
     gt::cols_label(q = "") |> 
-    gt::tab_style(style = list(cell_text(color = "white",
+    gt::tab_style(style = list(gt::cell_text(color = "white",
                                        weight = "bold"),
                                        gt::cell_fill(color = "#5C068C")),
-                locations = cells_title("title")) |> 
+                locations = gt::cells_title("title")) |> 
     gt::tab_style(style = gt::cell_borders(sides = c("top"),
                                      weight = px(2),
                                      style = "solid",
