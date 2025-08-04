@@ -46,14 +46,14 @@ likert_table = function(x, include_ns = TRUE, cross = NULL) {
   if(include_ns == TRUE & missing(cross)) {
     final_table <- results |> 
       dplyr::mutate(dplyr::across(tidyselect::where(is.numeric), ~.x/100)) |> 
-      dplyr::full_join(., valid_n, by = dplyr::join_by(Item))
+      dplyr::full_join(valid_n, by = dplyr::join_by(Item))
   }
   
   ## if include_ns argument is set to true and there is a value for the cross argument then divide all by 100 to get percents as decimals and join with the valid_n data frame by Item and Group to add the ns 
   if(include_ns == TRUE & !missing(cross)) {
     final_table <- results |> 
       dplyr::mutate(dplyr::across(tidyselect::where(is.numeric), ~.x/100)) |> 
-        dplyr::full_join(., valid_n, by = dplyr::join_by(Item == Item, Group == {{ cross }}))
+        dplyr::full_join(valid_n, by = dplyr::join_by(Item == Item, Group == {{ cross }}))
   }
   
   ## if include_ns argument is set to false then divide all by 100 to get percents as decimals
