@@ -1,4 +1,4 @@
-#' Set path to Dropbox folder to DROPBOX_PATH
+#' Set path to Dropbox folder to DROPBOX_PATH in .Renviron
 #'
 #' @export
 #' 
@@ -10,13 +10,13 @@ set_dropbox_path <- function() {
     }
 
     file_name <- list.files(
-      path = paste(Sys.getenv(x = "APPDATA"), "Dropbox", sep = "/"),
+      path = file.path(Sys.getenv("APPDATA"), "Dropbox"),
       pattern = "info*.json",
       full.names = TRUE
     )
     if (length(file_name) == 0) {
       file_name <- list.files(
-        path = paste(Sys.getenv(x = "LOCALAPPDATA"), "Dropbox", sep = "/"),
+        path = file.path(Sys.getenv("LOCALAPPDATA"), "Dropbox"),
         pattern = "info*.json",
         full.names = TRUE
       )
@@ -28,13 +28,32 @@ set_dropbox_path <- function() {
     }
 
     file_content <- jsonlite::fromJSON(txt = file_name)$business
-    path <- paste0(file_content$root_path, "/")
-    path
+    paste0(file_content$root_path, "/")
+    
   }
 
   dropbox_path <- dropbox_folder()
-  if (!is.null(dropbox_path)) {
-    Sys.setenv(DROPBOX_PATH = dropbox_path)
-    message(paste("DROPBOX_PATH successfully set: ", dropbox_path))
+
+   if (!is.null(dropbox_path)) {
+    # Path to .Renviron
+    renviron_path <- file.path(Sys.getenv("HOME"), ".Renviron")
+    
+    # Read existing content (if any)
+    if (file.exists(renviron_path)) {
+      renv <- readLines(renviron_path)
+      # Remove any old DROPBOX_PATH lines
+      renv <- renv[!grepl("^DROPBOX_PATH\\s*=\\s*", renv)]
+    } else {
+      renv <- character()
+    }
+    
+    # Add the new line
+    renv <- c(renv, paste0("DROPBOX_PATH = '", dropbox_path, "'"))
+    
+    # Write back to file
+    writeLines(renv, renviron_path)
+    
+    message("DROPBOX_PATH permanently set in .Renviron: ", dropbox_path)
+    message("Restart R or run `readRenviron('~/.Renviron')` to use it now.")
   }
 }
