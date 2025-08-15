@@ -1,4 +1,5 @@
 #' Set path to Dropbox folder to DROPBOX_PATH in .Renviron
+#' Needs {jsonlite} package to be installed
 #'
 #' @export
 #' 
