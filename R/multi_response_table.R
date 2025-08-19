@@ -65,5 +65,5 @@ multi_response_table = function(data, ..., cross = NULL) {
       ~ .x / 100
     )) %>%
     dplyr::filter(!grepl('- Text', q)) %>% #Remove row for Other - Text
-    dplyr::mutate(q = str_replace_all(q, stringr::fixed("#"), "")) # remove # from Total row
+    dplyr::mutate(q = stringr::str_replace_all(q, stringr::fixed("#"), "")) # remove # from Total row
 }

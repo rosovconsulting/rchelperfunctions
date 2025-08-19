@@ -23,14 +23,14 @@ multi_response_table_style = function(x) {
                                        gt::cell_fill(color = "#5C068C")),
                 locations = gt::cells_title("title")) |> 
     gt::tab_style(style = gt::cell_borders(sides = c("top"),
-                                     weight = px(2),
+                                     weight = gt::px(2),
                                      style = "solid",
                                      color = "#D3D3D3"),
                   locations = gt::cells_body(columns = tidyselect::everything(),
                                              rows = tidyselect::last_col())) |> 
     gt::opt_table_lines() |> 
     gt::tab_options(table.align = "left",
-                  data_row.padding = px(5)
+                  data_row.padding = gt::px(5)
                   )
   }
   
