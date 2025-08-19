@@ -9,7 +9,7 @@
 likert_table_style = function(x, table_title) {
   
   x |> 
-    dplyr::left_join(., merged_col_map) |> 
+    dplyr::left_join(col_map) |> 
       dplyr::select(-Item) |> 
         dplyr::select(Label, tidyselect::everything()) |> 
           dplyr::rename(Item = Label) |> 
