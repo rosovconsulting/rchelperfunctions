@@ -9,7 +9,7 @@ table_style(x, table_title, interactive = FALSE)
 \arguments{
 \item{x}{A dataframe}
 
-\item{table_title}{Title for gt Table \link{SHOULD IDEALLY COME FROM DATA, NOT TEXT}}
+\item{table_title}{Title for gt Table}
 
 \item{interactive}{Should the table be interactive}
 }
@@ -20,12 +20,12 @@ Styled gt table
 Add gt style to table
 }
 \examples{
-survey_data |> 
+\dontrun{survey_data |> 
   tabyl(q1) |> 
-  table_style(., table_title = "Region")
+  table_style(., table_title = "Region")}
 
-survey_data |> 
+\dontrun{survey_data |> 
   tabyl(q3_open_end) |> 
-  table_style(., table_title = "Comments", interactive = TRUE)
+  table_style(., table_title = "Comments", interactive = TRUE)}
 
 }

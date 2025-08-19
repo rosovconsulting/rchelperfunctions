@@ -1,7 +1,7 @@
 #' Add gt style to table
 #'
 #' @param x A dataframe
-#' @param table_title Title for gt Table [SHOULD IDEALLY COME FROM DATA, NOT TEXT]
+#' @param table_title Title for gt Table
 #' @param interactive Should the table be interactive
 #'
 #' @return Styled gt table
@@ -9,13 +9,13 @@
 #' @export
 #' 
 #' @examples
-#' survey_data |> 
+#' \dontrun{survey_data |> 
 #'   tabyl(q1) |> 
-#'   table_style(., table_title = "Region")
+#'   table_style(., table_title = "Region")}
 #' 
-#' survey_data |> 
+#' \dontrun{survey_data |> 
 #'   tabyl(q3_open_end) |> 
-#'   table_style(., table_title = "Comments", interactive = TRUE)
+#'   table_style(., table_title = "Comments", interactive = TRUE)}
 #' 
 
 table_style = function(x, table_title, interactive = FALSE) {

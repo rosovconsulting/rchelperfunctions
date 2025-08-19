@@ -15,7 +15,6 @@ Imports:
     gt,
     janitor,
     likert,
-    magrittr,
     purrr,
     stringr,
     tidyr,
