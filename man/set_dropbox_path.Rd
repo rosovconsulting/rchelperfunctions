@@ -2,10 +2,12 @@
 % Please edit documentation in R/set_dropbox_path.R
 \name{set_dropbox_path}
 \alias{set_dropbox_path}
-\title{Set path to Dropbox folder to DROPBOX_PATH}
+\title{Set path to Dropbox folder to DROPBOX_PATH in .Renviron
+Needs {jsonlite} package to be installed}
 \usage{
 set_dropbox_path()
 }
 \description{
-Set path to Dropbox folder to DROPBOX_PATH
+Set path to Dropbox folder to DROPBOX_PATH in .Renviron
+Needs {jsonlite} package to be installed
 }
