@@ -44,7 +44,7 @@ multi_response_table = function(data, ..., cross = NULL) {
     x <- x |>
       stats::setNames(paste(x[2, ], x[3, ], sep = "_")) |>
       dplyr::rename("q" = 1) |>
-      filter(q != "")
+      dplyr::filter(q != "")
   } else {
     x <- x |>
       janitor::row_to_names(
@@ -56,11 +56,11 @@ multi_response_table = function(data, ..., cross = NULL) {
   }
 
   x |>
-    dplyr::mutate(across(
+    dplyr::mutate(dplyr::across(
       tidyselect::matches("percent of cases"),
       ~ as.numeric(.x)
     )) |>
-    dplyr::mutate(across(
+    dplyr::mutate(dplyr::across(
       tidyselect::matches("percent of cases"),
       ~ .x / 100
     )) |>
