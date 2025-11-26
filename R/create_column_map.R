@@ -10,7 +10,7 @@
 #'
 
 create_column_map = function(data) {
-  labelled::var_label(data) |>
+  labelled::var_label(data, null_action = "fill") |>
     tibble::as_tibble() |>
     tidyr::pivot_longer(
       cols = tidyselect::everything(),
