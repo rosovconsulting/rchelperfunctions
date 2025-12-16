@@ -1,15 +1,26 @@
-#' Function for Multiple-response question frequency table
+#' Function for multiple-response question frequency table
+#' 
+#' @description
+#' `multi_response_table` creates a dataframe with frequency and percent of cases for multiple-response questions
+#' 
+#' `multi_response_table_style` creates a GT styled multi-response table from the output of `multi_response_table`
 #'
 #' @param data Survey data with multireponse split into multiple columns
 #' @param cross column variable
-#' @param ... expss selection
+#' @param ... selection of variable using expss selection helpers
 #'
 #' @return Multi-response dataframe
 #' @export
+#' @importFrom expss ..p mdset_p vars_list perl
 #'
 #' @examples
-#' \dontrun{multi_response_table(data = survey_data, mdset_t("q1_2_{1:11}")) |> 
-#'   multi_response_table_style()}
+#' # a simple multi-response table
+#' multi_response_table(rchabits, expss::mdset(expss::..p("q5_\\d"))) |>
+#'     multi_response_table_style("Types of Cuisine")
+#' 
+#' # a multi-response table with a cross variable
+#' multi_response_table(rchabits, cross = q1, expss::mdset(expss::..p("q5_\\d"))) |>
+#'     multi_response_table_style("Types of Cuisine X Age")
 #'
 #'
 multi_response_table = function(data, ..., cross = NULL) {
