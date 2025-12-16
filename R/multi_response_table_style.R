@@ -1,16 +1,13 @@
-#' Function for styling Multiple-response question frequency table in RC branding 
+#' Function for multiple-response question frequency table
 #'
 #' @param x result of multi_response_table
+#' @param table_title The text for the title of the table
 #'
 #' @return Styled multi-response dataframe
 #' @export
 #' 
-#' @examples
-#' \dontrun{multi_response_table(data = survey_data, mdset_t("q1_2_{1:11}")) |> 
-#' multi_response_table_style()
-#' }
-#' 
-multi_response_table_style = function(x) {
+#' @rdname multi_response_table
+multi_response_table_style = function(x, table_title) {
   x |> 
     gt::gt() |> 
     gt::sub_missing(columns = tidyselect::contains("percent of cases"),
@@ -18,6 +15,7 @@ multi_response_table_style = function(x) {
     gt::fmt_percent(columns = tidyselect::contains("percent of cases"),
                       decimals = 0) |>
     gt::cols_label(q = "") |> 
+    gt::tab_header(table_title) |>
     gt::tab_style(style = list(gt::cell_text(color = "white",
                                        weight = "bold"),
                                        gt::cell_fill(color = "#5C068C")),
