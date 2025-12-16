@@ -7,7 +7,7 @@
 #' @export
 #'
 likert_table_style = function(x, table_title) {
-  x |>
+  x <- x |>
     dplyr::left_join(col_map) |>
     dplyr::select(-Item) |>
     dplyr::select(Label, tidyselect::everything()) |>
@@ -15,8 +15,16 @@ likert_table_style = function(x, table_title) {
     dplyr::filter(dplyr::if_any(
       tidyselect::where(is.numeric) & !tidyselect::matches("^N$"),
       ~ .x != 0
-    )) |>
-    gt::gt(rowname_col = "Group", groupname_col = "Item") |>
+    ))
+
+  if ("Group" %in% colnames(x)) {
+    x <- x |>
+      gt::gt(rowname_col = "Group", groupname_col = "Item")
+  } else {
+    x <- x |>
+      gt::gt(groupname_col = "Item")
+  }
+  x |>
     gt::fmt_percent(
       columns = tidyselect::where(is.numeric) & !tidyselect::matches("^N$"),
       decimals = 0
