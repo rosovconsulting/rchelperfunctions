@@ -25,8 +25,8 @@ likert_table = function(x, include_ns = TRUE, cross = NULL) {
   
   ## if include_ns argument is set to true then create valid_n df with the Ns
   if(include_ns == TRUE) {
-    valid_n <- items %>% 
-      dplyr::summarise(dplyr::across(tidyselect::everything(), ~sum(!is.na(.x)))) %>% 
+    valid_n <- items |> 
+      dplyr::summarise(dplyr::across(tidyselect::everything(), ~sum(!is.na(.x)))) |> 
       tidyr::pivot_longer(cols = tidyselect::everything(),
                    names_to = "Item",
                    values_to = "N")
@@ -34,9 +34,9 @@ likert_table = function(x, include_ns = TRUE, cross = NULL) {
   
   ## if include_ns argument is set to true and there is a value for the cross argument then create valid_n df with the Ns grouped by the cross variable
   if(include_ns == TRUE & !missing(cross)) {
-    valid_n <- x %>% 
-      dplyr::group_by({{ cross }}) %>% 
-        dplyr::summarise(dplyr::across(tidyselect::everything(), ~sum(!is.na(.x)))) %>% 
+    valid_n <- x |> 
+      dplyr::group_by({{ cross }}) |> 
+        dplyr::summarise(dplyr::across(tidyselect::everything(), ~sum(!is.na(.x)))) |> 
       tidyr::pivot_longer(cols = -1,
                    names_to = "Item",
                    values_to = "N")
@@ -44,21 +44,21 @@ likert_table = function(x, include_ns = TRUE, cross = NULL) {
   
   ## if include_ns argument is set to true and there is no value for the cross argument then divide all by 100 to get percents as decimals and join with the valid_n data frame to add the ns
   if(include_ns == TRUE & missing(cross)) {
-    final_table <- results %>% 
-      dplyr::mutate(dplyr::across(tidyselect::where(is.numeric), ~.x/100)) %>% 
-      dplyr::full_join(., valid_n, by = dplyr::join_by(Item))
+    final_table <- results |> 
+      dplyr::mutate(dplyr::across(tidyselect::where(is.numeric), ~.x/100)) |> 
+      dplyr::full_join(valid_n, by = dplyr::join_by(Item))
   }
   
   ## if include_ns argument is set to true and there is a value for the cross argument then divide all by 100 to get percents as decimals and join with the valid_n data frame by Item and Group to add the ns 
   if(include_ns == TRUE & !missing(cross)) {
-    final_table <- results %>% 
-      dplyr::mutate(dplyr::across(tidyselect::where(is.numeric), ~.x/100)) %>% 
-        dplyr::full_join(., valid_n, by = dplyr::join_by(Item == Item, Group == {{ cross }}))
+    final_table <- results |> 
+      dplyr::mutate(dplyr::across(tidyselect::where(is.numeric), ~.x/100)) |> 
+        dplyr::full_join(valid_n, by = dplyr::join_by(Item == Item, Group == {{ cross }}))
   }
   
   ## if include_ns argument is set to false then divide all by 100 to get percents as decimals
   if(include_ns == FALSE) {
-    final_table <- results %>% 
+    final_table <- results |> 
       dplyr::mutate(dplyr::across(tidyselect::where(is.numeric), ~.x/100)) 
   }
   

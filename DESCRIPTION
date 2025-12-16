@@ -15,10 +15,12 @@ Imports:
     gt,
     janitor,
     likert,
-    magrittr,
     purrr,
     stringr,
     tidyr,
     tidyselect,
     jsonlite,
     expss
+Depends: 
+    R (>= 4.1.0)
+LazyData: true
