@@ -71,7 +71,7 @@ multi_response_table = function(data, ..., cross = NULL) {
     x <- x |>
       stats::setNames(paste(x[2, ], x[3, ], sep = "_")) |>
       dplyr::rename("q" = 1) |>
-      dplyr::filter(q != "")
+      dplyr::filter(nchar(as.character(q)) > 0)
   } else {
     x <- x |>
       janitor::row_to_names(
