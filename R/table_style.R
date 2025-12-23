@@ -34,7 +34,8 @@ table_style = function(x, table_title, interactive = FALSE) {
                 locations = gt::cells_title("title")) |>
   gt::tab_options(table.align = "left",
                   data_row.padding = gt::px(5)) |>
-  gt::opt_table_lines()
+  gt::opt_table_lines() |> 
+  gt::opt_table_font(font = c("HK Grotesk Pro AltJ"))
   
   if (interactive == TRUE) {
     table_output |>
