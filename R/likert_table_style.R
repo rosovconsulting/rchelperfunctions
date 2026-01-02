@@ -7,6 +7,11 @@
 #' @export
 #'
 likert_table_style = function(x, table_title) {
+  assertthat::assert_that(
+    exists("col_map", envir = .GlobalEnv),
+    msg = "`col_map` must exist in the global environment. See ?create_column_map."
+  )
+
   x <- x |>
     dplyr::left_join(col_map) |>
     dplyr::select(-Item) |>
