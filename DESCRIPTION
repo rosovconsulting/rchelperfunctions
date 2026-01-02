@@ -5,22 +5,25 @@ Authors@R:
     person("Megan", "Brown", , "mbrown@rosovconsulting.com", role = c("aut", "cre"))
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
-Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
+Depends: 
+    R (>= 4.1.0)
 Imports: 
+    assertthat,
     dplyr,
     DT,
+    expss,
     forcats,
     gt,
     janitor,
+    jsonlite,
+    labelled,
     likert,
     purrr,
     stringr,
+    tibble,
     tidyr,
-    tidyselect,
-    jsonlite,
-    expss
-Depends: 
-    R (>= 4.1.0)
+    tidyselect
+Encoding: UTF-8
 LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
