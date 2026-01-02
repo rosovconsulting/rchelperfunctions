@@ -7,7 +7,7 @@
 #' @export 
 #' 
 open_ends_table = function(data, varname) {
-  
+  .Deprecated("table_style with interactive = TRUE")
   data |> 
     janitor::tabyl({{varname}}) |> 
     dplyr::select(1) |> 
