@@ -10,16 +10,16 @@ new_report(dir, token = Sys.getenv("GIT_ROSOV"))
 \item{dir}{Directory for the report}
 
 \item{token}{A Github token with read access of the
-github.com/rfortherestofus/rosov-report-template repository.
+github.com/rosovconsulting/rosov-report-template repository.
 Default to the GIT_ROSOV environment variable.}
 }
 \description{
 Init a new directory for a report based on Rosov
 Consulting Typst template defined here:
-https://github.com/rfortherestofus/rosov-report-template
+https://github.com/rosovconsulting/rosov-report-template
 }
 \examples{
-/dontrun{
+\dontrun{
 new_report("example-report")
 }
 

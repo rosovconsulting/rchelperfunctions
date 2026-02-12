@@ -3,15 +3,15 @@
 #' @description
 #' Init a new directory for a report based on Rosov
 #' Consulting Typst template defined here:
-#' https://github.com/rfortherestofus/rosov-report-template
+#' https://github.com/rosovconsulting/rosov-report-template
 #'
 #' @param dir Directory for the report
 #' @param token A Github token with read access of the
-#' github.com/rfortherestofus/rosov-report-template repository.
+#' github.com/rosovconsulting/rosov-report-template repository.
 #' Default to the GIT_ROSOV environment variable.
 #'
 #' @examples
-#' /dontrun{
+#' \dontrun{
 #' new_report("example-report")
 #' }
 #'
@@ -19,14 +19,14 @@
 new_report <- function(dir, token = Sys.getenv("GIT_ROSOV")) {
     if (token == "") {
         stop(
-            "Github token not found. You need to have a Github token with read content access of the github.com/rfortherestofus/rosov-report-template repository. Create a new one here: https://github.com/settings/tokens. It's recommended to set it as the GIT_ROSOV environment variable with usethis::edit_r_environ()."
+            "Github token not found. You need to have a Github token with read content access of the github.com/rosovconsulting/rosov-report-template repository. Create a new one here: https://github.com/settings/tokens. It's recommended to set it as the GIT_ROSOV environment variable with usethis::edit_r_environ()."
         )
     }
 
     download_files <- function(path_in_repo, files, dest_dir) {
         req <- gh::gh(
             "GET /repos/{owner}/{repo}/contents/{path}",
-            owner = "rfortherestofus",
+            owner = "rosovconsulting",
             repo = "rosov-report-template",
             path = path_in_repo,
             .token = token
@@ -39,7 +39,7 @@ new_report <- function(dir, token = Sys.getenv("GIT_ROSOV")) {
             if (length(file_info) == 1) {
                 content <- gh::gh(
                     "GET /repos/{owner}/{repo}/contents/{path}",
-                    owner = "rfortherestofus",
+                    owner = "rosovconsulting",
                     repo = "rosov-report-template",
                     path = file.path(path_in_repo, file_name),
                     .token = token
