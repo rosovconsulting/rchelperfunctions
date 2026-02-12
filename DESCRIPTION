@@ -17,6 +17,7 @@ Imports:
     janitor,
     jsonlite,
     labelled,
+    knitr,
     likert,
     purrr,
     stringr,

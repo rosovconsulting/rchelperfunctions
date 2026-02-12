@@ -2,15 +2,21 @@
 #'
 #' @param x A dataframe
 #' @param table_title Title for gt Table
+#' @param column_map dataframe with variable labels in 2 columns named Item and Label
 #'
 #' @return Styled gt table
 #' @export
 #'
-likert_table_style = function(x, table_title) {
-  assertthat::assert_that(
-    exists("col_map", envir = .GlobalEnv),
-    msg = "`col_map` must exist in the global environment. See ?create_column_map."
-  )
+likert_table_style = function(x, table_title, column_map = NULL) {
+  if (missing(column_map)) {
+    
+    assertthat::assert_that(
+      exists("col_map", envir = knitr::knit_global()),
+      msg = "`col_map` must exist in the parent environment. See ?create_column_map or specify the name of your column_map."
+    )
+    
+    col_map <- get("col_map", envir = knitr::knit_global())
+  }
 
   x <- x |>
     dplyr::left_join(col_map) |>

@@ -4,12 +4,14 @@
 \alias{likert_table_style}
 \title{Add gt style to table}
 \usage{
-likert_table_style(x, table_title)
+likert_table_style(x, table_title, column_map = NULL)
 }
 \arguments{
 \item{x}{A dataframe}
 
 \item{table_title}{Title for gt Table}
+
+\item{column_map}{dataframe with variable labels in 2 columns named Item and Label}
 }
 \value{
 Styled gt table
