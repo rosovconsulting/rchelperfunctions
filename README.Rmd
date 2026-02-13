@@ -57,7 +57,7 @@ gt::gtsave(age_table, "man/figures/age-table.png")
 
 ```
 
-```{r include graphic age, echo=FALSE}
+```{r include graphic age, echo=FALSE, out.width = "50%"}
 knitr::include_graphics("man/figures/age-table.png")
 ```
 
@@ -72,7 +72,7 @@ gt::gtsave(cuisine_table, "man/figures/cuisine-table.png")
 
 ```
 
-```{r include graphic cuisine, echo=FALSE}
+```{r include graphic cuisine, echo=FALSE, out.width = "50%"}
 knitr::include_graphics("man/figures/cuisine-table.png")
 ```
 

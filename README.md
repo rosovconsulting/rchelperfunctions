@@ -38,14 +38,14 @@ age_table <- rchabits |>
   table_style("Age")
 ```
 
-<img src="man/figures/age-table.png" alt="" width="100%" />
+<img src="man/figures/age-table.png" alt="" width="50%" />
 
 ``` r
 cuisine_table <- multi_response_table(rchabits, expss::mdset_p("q6_\\d")) |>
      multi_response_table_style("Types of Cuisine")
 ```
 
-<img src="man/figures/cuisine-table.png" alt="" width="100%" />
+<img src="man/figures/cuisine-table.png" alt="" width="50%" />
 
 ``` r
 habits_table <- rchabits |>
