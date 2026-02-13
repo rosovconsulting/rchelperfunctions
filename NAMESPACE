@@ -3,8 +3,6 @@
 export(create_column_map)
 export(likert_table)
 export(likert_table_style)
-export(likert_tidy_table)
-export(likert_tidy_table_style)
 export(multi_response_table)
 export(multi_response_table_style)
 export(new_report)
