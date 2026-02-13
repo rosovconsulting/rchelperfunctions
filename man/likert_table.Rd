@@ -37,10 +37,10 @@ rchabits |>
    likert_table()
 
 # a likert table with a cross variable
-rchabits |>
+\dontrun{rchabits |>
     dplyr::select(q1, tidyselect::starts_with("q3_")) |>
     likert_table(cross = q1) |>
-    likert_table_style("Title")
+    likert_table_style("Title")}
 
 
 }
