@@ -9,7 +9,9 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  message = FALSE,
+  warning = FALSE
 )
 ```
 
@@ -43,29 +45,69 @@ col_map <- create_column_map(rchabits)
 
 ```
 ```{r age}
-rchabits |> 
+age_table <- rchabits |> 
   tabyl(q1, show_na = FALSE) |> 
+  adorn_totals() |>
   table_style("Age")
 ```
 
+```{r include=FALSE}
+## need webshot2 intalled to build .md
+gt::gtsave(age_table, "man/figures/age-table.png")
+
+```
+
+```{r include graphic age, echo=FALSE}
+knitr::include_graphics("man/figures/age-table.png")
+```
+
 ```{r cuisine}
-multi_response_table(rchabits, expss::mdset_p("q6_\\d")) |>
+cuisine_table <- multi_response_table(rchabits, expss::mdset_p("q6_\\d")) |>
      multi_response_table_style("Types of Cuisine")
+```
+
+```{r include=FALSE}
+## need webshot2 intalled to build .md
+gt::gtsave(cuisine_table, "man/figures/cuisine-table.png")
+
+```
+
+```{r include graphic cuisine, echo=FALSE}
+knitr::include_graphics("man/figures/cuisine-table.png")
 ```
 
 
 ```{r habits}
-rchabits |>
+habits_table <- rchabits |>
     dplyr::select(tidyselect::starts_with("q3_")) |>
     likert_table() |>
     likert_table_style("Habits") |>
     gt::sub_missing(missing_text = "No answer")
 ```
 
+```{r include=FALSE}
+## need webshot2 intalled to build .md
+gt::gtsave(habits_table, "man/figures/habits-table.png")
+
+```
+
+```{r include graphic habits, echo=FALSE}
+knitr::include_graphics("man/figures/habits-table.png")
+```
 
 ```{r cuisine x age}
-rchabits |>
+cuisine_by_age_table <- rchabits |>
      dplyr::select(q1, tidyselect::starts_with("q3_")) |>
      likert_table(cross = q1) |>
-     likert_table_style("Title")
+     likert_table_style("Cuisine X Age")
+```
+
+```{r include=FALSE}
+## need webshot2 intalled to build .md
+gt::gtsave(cuisine_by_age_table, "man/figures/cuisine-by-age-table.png")
+
+```
+
+```{r include graphic cuisine x age, echo=FALSE}
+knitr::include_graphics("man/figures/cuisine-by-age-table.png")
 ```
