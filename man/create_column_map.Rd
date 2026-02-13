@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_column_map.R
 \name{create_column_map}
 \alias{create_column_map}
-\title{Create column map}
+\title{Create a column map for use as a codebook. Functions like \code{likert_table_style} use a column map to add variable labels to a table.}
 \usage{
 create_column_map(data)
 }
@@ -10,10 +10,14 @@ create_column_map(data)
 \item{data}{A data frame with variable labels}
 }
 \value{
-A dataframe
+A dataframe with question numbers and labels. Columns in the output data frame are:
+\describe{
+\item{Item}{variable name}
+\item{Label}{variable label}
+}
 }
 \description{
-Create column map
+Create a column map for use as a codebook. Functions like \code{likert_table_style} use a column map to add variable labels to a table.
 }
 \examples{
 \dontrun{col_map <- create_column_map(survey_data)}
