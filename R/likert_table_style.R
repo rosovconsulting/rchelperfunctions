@@ -7,6 +7,7 @@
 #' @return Styled gt table
 #' @export
 #'
+#' @rdname likert_table
 likert_table_style = function(x, table_title, column_map = NULL) {
   if (missing(column_map)) {
     

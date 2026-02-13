@@ -1,4 +1,9 @@
 #' Create table from likert function
+#' 
+#' @description
+#' `likert_table` creates a dataframe with proportions and total n's for likert matrix questions
+#'
+#' `likert_table_style` creates a GT styled likert table from the output of `likert_table`
 #'
 #' @param x A dataframe with only the variables you want in this function call.
 #' @param include_ns Should the table include N's.
@@ -7,6 +12,19 @@
 #' @return Likert result dataframe
 #' @export
 #' 
+#' @examples
+#' # a simple likert table
+#' rchabits |>
+#'    dplyr::select(tidyselect::starts_with("q3_")) |>
+#'    likert_table()
+#'
+#' # a likert table with a cross variable
+#' rchabits |>
+#'     dplyr::select(q1, tidyselect::starts_with("q3_")) |>
+#'     likert_table(cross = q1) |>
+#'     likert_table_style("Title")
+#'
+#'
 likert_table = function(x, include_ns = TRUE, cross = NULL) {
   
   ## x should already be a data frame with only the variables you want in this function call
